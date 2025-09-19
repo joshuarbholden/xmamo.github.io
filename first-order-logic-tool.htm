@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<!-- saved from url=(0039)https://mamo.dev/first-order-logic-tool -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" data-lt-installed="true" style="--vsc-domain: &quot;mamo.dev&quot;;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="Content-Security-Policy" content="script-src-elem 'self' 'unsafe-inline' filesystem 'sha256-yei5Fza+Eyx4G0smvN0xBqEesIKumz6RSyGsU3FJowI='">
+		<meta name="author" content="Matteo Morena">
+		<meta name="description" content="This tool analyzes first order logic formulas converting them to prenex conjunctive/disjunctive form and generates the truth table for propositional formulas.">
+		<meta name="keywords" content="first order logic, FOL, first order, predicative logic, predicative, propositional logic, propositional, logic, first order formula, FOL formula, predicative formula, formula, online tool, tool, software, analyzer, converter, normalizer, generator, normal form, NF, normal, prenex normal form, PNF, prenex, disjunctive normal form, DNF, disjunctive, conjunctive normal form, CNF, conjunctive">
+		<meta name="theme-color" content="#222">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>First order logic tool—Mamo.dev</title>
+
+		<!--<base target="_blank">--><base href="." target="_blank">
+
+		
+		<link rel="stylesheet" href="./first-order-logic-tool_files/main.css">
+		<link rel="stylesheet" href="./first-order-logic-tool_files/first-order-logic-tool.css">
+
+		
+		<script type="module" src="./first-order-logic-tool_files/main.js.download"></script>
+	</head>
+
+	<body>
+		<header id="header">
+			<div id="header-top">
+				<span id="header-title">Matteo Morena</span>
+				<span id="header-subtitle" class="blinking-cursor">Software developer</span>
+			</div>
+
+			<nav class="menu">
+    <span class="menu-hamburger">≡</span>
+
+    <ul class="menu-item-list">
+        
+            <li class="menu-item ">
+                
+                    <a class="menu-item-content" href="https://mamo.dev/" target="_self">About</a>
+                
+
+                
+            </li>
+        
+            <li class="menu-item has-submenu">
+                
+                    <span class="menu-item-content">Software, projects and tools</span>
+                
+
+                
+                    <ul class="submenu-item-list">
+                        
+                            <li class="submenu-item">
+                                
+                                    <a class="submenu-item-content" href="https://mamo.dev/first-order-logic-tool" target="_self">First order logic tool</a>
+                                
+                            </li>
+                        
+                            <li class="submenu-item">
+                                
+                                    <a class="submenu-item-content" href="https://mamo.dev/discrete-time-projectile-motion-calculator" target="_self">Discrete-time projectile motion calculator</a>
+                                
+                            </li>
+                        
+                            <li class="submenu-item">
+                                
+                                    <a class="submenu-item-content" href="https://mamo.dev/vanillavotifier" target="_self">VanillaVotifier</a>
+                                
+                            </li>
+                        
+                            <li class="submenu-item">
+                                
+                                    <a class="submenu-item-content" href="https://github.com/xMamo/xMamo.github.io">Website source code</a>
+                                
+                            </li>
+                        
+                    </ul>
+                
+            </li>
+        
+            <li class="menu-item has-submenu">
+                
+                    <span class="menu-item-content">Fun</span>
+                
+
+                
+                    <ul class="submenu-item-list">
+                        
+                            <li class="submenu-item">
+                                
+                                    <a class="submenu-item-content" href="https://mamo.dev/game-of-life" target="_self">Game of Life</a>
+                                
+                            </li>
+                        
+                            <li class="submenu-item">
+                                
+                                    <a class="submenu-item-content" href="https://mamo.dev/game-of-life-3d" target="_self">Game of Life 3D</a>
+                                
+                            </li>
+                        
+                    </ul>
+                
+            </li>
+        
+    </ul>
+</nav>
+		</header>
+
+		<main>
+			
+				<article>
+					<h1>First order logic tool</h1>
+
+<p>Use the input field below to write a first order formula. Confirm your input by pressing enter. To insert ¬, ∧, ∨, →,
+←, ↔, ∀, ∃ type !, &amp;, |, -&gt;, &lt;-, &lt;-&gt;, \A, \E respectively.</p>
+
+<form id="first-order-logic-tool">
+	<p>
+		<label for="first-order-logic-tool-formula">Formula</label>
+		<input id="first-order-logic-tool-formula" name="formula" value="A → B ∧ C" spellcheck="false">
+		<small id="first-order-logic-tool-error" style="display: none;"></small>
+	</p>
+</form>
+
+<div id="first-order-logic-tool-result" style="">
+	<p>
+		Parsed formula:
+		<output id="first-order-logic-tool-parsed" for="first-order-logic-tool-formula"><div class="first-order-logic-tool-box" style="border-color: rgb(0, 128, 255);"><var>A</var> <span style="color: rgb(0, 128, 255);">→</span> <div class="first-order-logic-tool-box" style="border-color: rgb(255, 128, 0);"><var>B</var> <span style="color: rgb(255, 128, 0);">∧</span> <var>C</var></div></div></output>
+	</p>
+
+	<p>
+		Interpretation:
+		<output id="first-order-logic-tool-interpretation" for="first-order-logic-tool-formula"><ul><li><var>A</var> is a sentence</li><li><var>B</var> is a sentence</li><li><var>C</var> is a sentence</li></ul></output>
+	</p>
+
+	<p>
+		Height: <output id="first-order-logic-tool-height" for="first-order-logic-tool-formula">3</output><br>
+		Degree: <output id="first-order-logic-tool-degree" for="first-order-logic-tool-formula">2</output>
+	</p>
+
+	<p>
+		Prenex normal form:<br>
+		<output id="first-order-logic-tool-prenex" for="first-order-logic-tool-formula"><span><var>A</var> → <span><var>B</var> ∧ <var>C</var></span></span></output>
+	</p>
+
+	<p>
+		Prenex disjunctive normal form:<br>
+		<output id="first-order-logic-tool-prenex-dnf" for="first-order-logic-tool-formula"><span><span>¬<var>A</var></span> ∨ (<span><var>B</var> ∧ <var>C</var></span>)</span></output>
+	</p>
+
+	<p>
+		Prenex conjunctive normal form:<br>
+		<output id="first-order-logic-tool-prenex-cnf" for="first-order-logic-tool-formula"><span>(<span><span>¬<var>A</var></span> ∨ <var>B</var></span>) ∧ (<span><span>¬<var>A</var></span> ∨ <var>C</var></span>)</span></output>
+	</p>
+
+	<p id="first-order-logic-tool-truth-table-result">
+		Truth table:
+		<output id="first-order-logic-truth-table" for="first-order-logic-tool-formula"><table><thead><tr><th><var>A</var></th><th><var>B</var></th><th><var>C</var></th><th><span><var>A</var> → <span><var>B</var> ∧ <var>C</var></span></span></th></tr></thead><tbody><tr><td>𝔽</td><td>𝔽</td><td>𝔽</td><td>𝕋</td></tr><tr><td>𝔽</td><td>𝔽</td><td>𝕋</td><td>𝕋</td></tr><tr><td>𝔽</td><td>𝕋</td><td>𝔽</td><td>𝕋</td></tr><tr><td>𝔽</td><td>𝕋</td><td>𝕋</td><td>𝕋</td></tr><tr><td>𝕋</td><td>𝔽</td><td>𝔽</td><td>𝔽</td></tr><tr><td>𝕋</td><td>𝔽</td><td>𝕋</td><td>𝔽</td></tr><tr><td>𝕋</td><td>𝕋</td><td>𝔽</td><td>𝔽</td></tr><tr><td>𝕋</td><td>𝕋</td><td>𝕋</td><td>𝕋</td></tr></tbody></table></output>
+	</p>
+</div>
+
+<h2>Purpose and usage of the tool</h2>
+
+<p>The purpose of this tool is to analyze propositional formulas like
+<span class="nowrap"><var>A</var> → <var>B</var> ∧ <var>C</var></span> and first order formulas like
+<span class="nowrap">∀<var>x</var> ¬∃<var>y</var> (<var>p</var>(<var>x</var>) → <var>q</var>(<var>y</var>))</span>.</p>
+
+<p>Given any formula of these types, the tool is able to calculate the degree and the height of the formula. It is also
+able to infer the meaning of each used symbol, which means it understands if the symbol stands for a variable,
+constant, function, or predicate. In addition, the tool derives a formula in prenex normal form which is logically
+equivalent to the initial formula. Given a propositional formula, it automatically generates the corresponding truth
+table.</p>
+
+<p>To use the tool, simply write the formula to be analyzed in the input field above and press enter. The symbols ¬, ∧, ∨,
+→, ←, ↔, ∀, ∃ can be inserted by typing !, &amp;, |, -&gt;, &lt;-, &lt;-&gt;, \A, \E respectively.</p>
+
+<h2>Syntax of first order formulas</h2>
+
+<h3>First order languages</h3>
+
+<p>A <dfn>first order language</dfn> is a language characterized by:</p>
+
+<ul>
+  <li>
+    <p>A set of <dfn>constant symbols</dfn>;</p>
+  </li>
+  <li>
+    <p>A set of <dfn>variable symbols</dfn>;</p>
+  </li>
+  <li>
+    <p>A set of <dfn>function symbols</dfn>, each with an associated arity;</p>
+  </li>
+  <li>
+    <p>A set of <dfn>predicate symbols</dfn>, each with an associated arity;</p>
+  </li>
+  <li>
+    <p>The <dfn>logic symbols</dfn> ¬, ∧, ∨, →, ←, ↔;</p>
+  </li>
+  <li>
+    <p>The <dfn>quantifier symbols</dfn> ∀, ∃;</p>
+  </li>
+  <li>
+    <p>The <dfn>punctuation symbols</dfn> (, ), ,.</p>
+  </li>
+</ul>
+
+<h3>Terms</h3>
+
+<p><dfn>Terms</dfn> are the basic building blocks needed to write first order formulas. They are defined inductively as
+follows:</p>
+
+<ul>
+  <li>
+    <p>Every variable is a term;</p>
+  </li>
+  <li>
+    <p>Every constant is a term;</p>
+  </li>
+  <li>
+    <p><span class="nowrap"><var>f</var>(<var>t</var><sub>1</sub>, …, <var>t</var><sub><var>n</var></sub>)</span> is a
+term if <var>t</var><sub>1</sub>, …, <var>t</var><sub><var>n</var></sub> are terms and <var>f</var> is a function
+of arity <var>n</var>.</p>
+  </li>
+</ul>
+
+<h3>Formulas</h3>
+
+<p>A <dfn>first order formula</dfn> can be defined inductively as follows:</p>
+
+<ul>
+  <li>
+    <p><span class="nowrap"><var>p</var>(<var>t</var><sub>1</sub>, …, <var>t</var><sub><var>n</var></sub>)</span> is a
+formula if <var>t</var><sub>1</sub>, …, <var>t</var><sub><var>n</var></sub> are terms and <var>p</var> is a
+predicate of arity <var>n</var>. A formula of this kind is called <dfn>atomic</dfn>;</p>
+  </li>
+  <li>
+    <p>(¬<var>F</var>) is a formula if <var>F</var> is a formula;</p>
+  </li>
+  <li>
+    <p><span class="nowrap">(<var>F</var> ∧ <var>G</var>)</span>,
+<span class="nowrap">(<var>F</var> ∨ <var>G</var>)</span>,
+<span class="nowrap">(<var>F</var> → <var>G</var>)</span>,
+<span class="nowrap">(<var>F</var> ← <var>G</var>)</span>,
+<span class="nowrap">(<var>F</var> ↔ <var>G</var>)</span> are formulas if both <var>F</var> and <var>G</var> are
+formulas;</p>
+  </li>
+  <li>
+    <p><span class="nowrap">(∀<var>x</var> <var>F</var>)</span>, <span class="nowrap">(∃<var>x</var> <var>F</var>)</span>
+are formulas if <var>x</var> is a variable and <var>F</var> is a formula.</p>
+  </li>
+</ul>
+
+				</article>
+			
+		</main>
+	
+</body></html>
